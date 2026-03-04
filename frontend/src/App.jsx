@@ -4,7 +4,6 @@ import RoutesConfig from './routes/routes'
 const App = () => {
   return (
     <div>
-      
       <RoutesConfig />
     </div>
   )
