@@ -1,10 +1,14 @@
-import React from 'react'
-import RoutesConfig from './routes/routes'
+import React from "react"
+import RoutesConfig from "./routes/routes"
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 
 const App = () => {
   return (
     <div>
-      <RoutesConfig />
+      <Navbar />
+        <RoutesConfig />
+      <Footer />
     </div>
   )
 }
