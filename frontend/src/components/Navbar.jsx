@@ -51,14 +51,14 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/dashboard/addNote"
+            to="/dashboard/view"
             className="px-4 py-2 hover:bg-gray-100"
           >
             My Notes
           </NavLink>
 
           <NavLink
-            to="/dashboard/view"
+            to="/dashboard/addNote"
             className="px-4 py-2 hover:bg-gray-100"
           >
             New Note
