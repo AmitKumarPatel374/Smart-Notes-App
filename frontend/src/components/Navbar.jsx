@@ -27,7 +27,7 @@ const Navbar = () => {
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute right-8 top-16 w-48 bg-white text-black rounded-lg shadow-lg flex flex-col overflow-hidden">
+        <div className="absolute right-8 top-16 w-48 bg-gray-800 text-gray-500 rounded-lg shadow-lg flex flex-col overflow-hidden z-50">
 
           <NavLink
             to="/profile"

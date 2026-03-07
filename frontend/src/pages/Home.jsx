@@ -48,7 +48,7 @@ const Home = () => {
         <div className="grid md:grid-cols-3 gap-8">
 
           {/* Card */}
-          <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition">
+          <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition border border-gray-300">
             <FileText size={34} className="mb-4 text-blue-500" />
             <h3 className="text-lg font-semibold mb-2">Create Notes</h3>
             <p className="text-gray-500 text-sm">
@@ -56,7 +56,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition">
+          <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition  border border-gray-300">
             <LayoutDashboard size={34} className="mb-4 text-green-500" />
             <h3 className="text-lg font-semibold mb-2">Smart Dashboard</h3>
             <p className="text-gray-500 text-sm">
@@ -64,7 +64,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition">
+          <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition  border border-gray-300">
             <PlusCircle size={34} className="mb-4 text-purple-500" />
             <h3 className="text-lg font-semibold mb-2">Quick Add</h3>
             <p className="text-gray-500 text-sm">
