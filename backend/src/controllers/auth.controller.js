@@ -9,7 +9,10 @@ class AuthController {
     try {
       const userData = req.body;
 
-      console.log("user data received successfully!", userData);
+    //   console.log("user data received successfully!", userData);
+      const result = await this.userService.register(userData);
+
+      res.status(201).json({success:true, data:result});
 
     } catch (error) {
       next(error); // ✅ important for errorHandler
