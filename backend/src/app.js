@@ -13,7 +13,7 @@ app.use(
     credentials: true,
   })
 )
-app.use("/api/auth",)
+app.use("/api/auth",authRoutes)
 
 
 module.exports = app;

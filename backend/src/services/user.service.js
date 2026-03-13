@@ -1,10 +1,10 @@
-const { default: mongoUserRepository } = require("../repositories/implementations/mongoUserRepository");
+const MongoUserRepository = require("../repositories/implementations/mongoUserRepository"); 
 
 
 
 class UserService {
     constructor(){
-        this.userRepository = new mongoUserRepository();
+        this.userRepository = new MongoUserRepository();
     }
 
     async register(userData) {
@@ -13,4 +13,4 @@ class UserService {
     }
 }
 
-export default UserService
+module.exports = UserService;

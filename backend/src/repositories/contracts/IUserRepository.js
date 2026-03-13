@@ -1,5 +1,7 @@
 class IUserRepository {
     async createUser(userData){
-        throw new AppError("Method not implemented", 500);
+        throw new AppError("Method not implemented");
     }
 }
+
+module.exports = IUserRepository;
