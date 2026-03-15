@@ -1,10 +1,11 @@
-const userModel = require("../../models/User.model")
-const IUserRepository = require("../contracts/IUserRepository")
+const userModel = require("../../models/User.model");
+const IUserRepository = require("../contracts/IUserRepository");
 
-class MongoUserRepository extends IUserRepository {
-  async createUser(userData) {
-    return await userModel.create(userData); 
-  }
+
+class MongoUserRepository extends IUserRepository{
+    async createUser(userData){
+
+    }
 }
 
-module.exports = MongoUserRepository
+module.exports = MongoUserRepository;
