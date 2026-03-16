@@ -10,6 +10,9 @@ class UserService {
     async register(userData) {
         console.log("this is user data:",userData);
         
+        const user = await this.userRepository.createUser(userData);
+
+        return user;
     }
 }
 
