@@ -1,4 +1,5 @@
 const MongoUserRepository = require("../repositories/implementations/mongoUserRepository"); 
+const AppError = require("../utils/error");
 
 
 
@@ -9,7 +10,11 @@ class UserService {
 
     async register(userData) {
         console.log("this is user data:",userData);
-        
+
+        const existingUser = await this.userRepository.findUserByEmail(userData.email);
+        if (existingUser) {
+            throw new AppError("Email already exists", 409);
+        }
         const user = await this.userRepository.createUser(userData);
 
         return user;
