@@ -4,5 +4,6 @@ const authController = require("../controllers/auth.controller"); // ✅ FIXED
 const router = express.Router();
 
 router.post("/register", authController.register);
+router.post("/user", authController.findUserByEmail);
 
 module.exports = router;
