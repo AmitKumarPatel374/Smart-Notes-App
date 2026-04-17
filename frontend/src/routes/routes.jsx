@@ -5,6 +5,8 @@ import Dashboard from '../pages/dashboard';
 import AddNote from '../pages/addNote';
 import ViewNotes from '../pages/viewNotes';
 import Profile from '../pages/Profile';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 const RoutesConfig = () => {
   return (
@@ -15,6 +17,8 @@ const RoutesConfig = () => {
         <Route path='/dashboard/addNote'  element={<AddNote /> }/>
         <Route path='/dashboard/view'  element={<ViewNotes />}/>
         <Route path='/profile'  element={<Profile />}/>
+        <Route path='/login'  element={<Login />}/>
+        <Route path='/register'  element={<Register />}/>
       </Routes>
     </div>
   )
