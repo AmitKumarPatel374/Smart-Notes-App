@@ -1,3 +1,5 @@
+const AppError = require("../../utils/error");
+
 class IUserRepository {
     async createUser(userData){
         throw new AppError("Method not implemented");

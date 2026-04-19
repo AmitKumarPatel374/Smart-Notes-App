@@ -9,7 +9,7 @@ class UserService {
     }
 
     async register(userData) {
-        console.log("this is user data:",userData);
+        console.log("this is user data:",userData); 
 
         const existingUser = await this.userRepository.findUserByEmail(userData.email);
         if (existingUser) {
