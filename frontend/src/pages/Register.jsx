@@ -1,26 +1,30 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
-import {Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from "lucide-react"
+import apiInstance from "../api/apiInstance"
+import { toast } from "react-toastify"
 
 const Register = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [isShowPassword,setIsShowPassword]= useState(false);
+  const [isShowPassword, setIsShowPassword] = useState(false)
 
-  const submitHandler=(data)=>{
-     try {
-       console.log(data);
-       
-     } catch (error) {
-      
-     }
+  const submitHandler = async (data) => {
+    try {
+      const response = await apiInstance.post("/auth/register", data)
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+
+      toast.error(error.response?.data?.message || "Something went wrong")
+    }
   }
 
   return (
@@ -30,7 +34,10 @@ const Register = () => {
           <h1 className="text-zinc-500 text-4xl">Register</h1>
           <p>Create your new account and get started</p>
         </div>
-        <form className="flex flex-col gap-2" onSubmit={handleSubmit(submitHandler)}>
+        <form
+          className="flex flex-col gap-2"
+          onSubmit={handleSubmit(submitHandler)}
+        >
           <div className="flex flex-col">
             <label
               htmlFor=""
@@ -73,11 +80,16 @@ const Register = () => {
             </label>
             <input
               placeholder="Enter your password"
-              type={isShowPassword?"text":"password"}
+              type={isShowPassword ? "text" : "password"}
               {...register("password", { required: "password is required" })}
               className="border p-1 rounded-md"
             />
-            <p className="absolute top-7 left-48 text-zinc-500" onClick={()=>setIsShowPassword(!isShowPassword)}>{isShowPassword?  <Eye /> :    <EyeOff />}</p>
+            <p
+              className="absolute top-7 left-48 text-zinc-500"
+              onClick={() => setIsShowPassword(!isShowPassword)}
+            >
+              {isShowPassword ? <Eye /> : <EyeOff />}
+            </p>
             <p className="text-[12px] text-red-500 ml-1">{errors?.password?.message}</p>
           </div>
           <button
@@ -87,7 +99,13 @@ const Register = () => {
             {isSubmitting ? "Submitting" : "Register"}
           </button>
           <p className="text-zinc-400">
-            Already have an account? <span className="font-bold text-blue-500 cursor-pointer" onClick={()=>navigate("/login")}>Login</span>
+            Already have an account?{" "}
+            <span
+              className="font-bold text-blue-500 cursor-pointer"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </span>
           </p>
         </form>
       </div>
