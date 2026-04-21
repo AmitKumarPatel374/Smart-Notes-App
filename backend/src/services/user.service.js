@@ -1,3 +1,4 @@
+const userModel = require("../models/User.model");
 const MongoUserRepository = require("../repositories/implementations/mongoUserRepository"); 
 const AppError = require("../utils/error");
 
@@ -23,6 +24,25 @@ class UserService {
     async findUserByEmail(email){
         const user = await this.userRepository.findUserByEmail(email);
         return user;
+    }
+
+    async loginUser(userData){
+        const {email,password}=userData;
+
+        const existingUser = await this.userRepository.findUserByEmail(email);
+        if(!existingUser){
+            throw new AppError("email does not exists",404);
+        }
+
+        let cp = await existingUser.comparePass(password);
+        if(!cp){
+            throw new AppError("Invalid Credientials!",400);
+        }
+
+        const token = await existingUser.generateToken();
+        
+
+        
     }
 }
 

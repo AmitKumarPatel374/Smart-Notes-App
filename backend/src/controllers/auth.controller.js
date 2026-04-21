@@ -30,6 +30,19 @@ class AuthController {
         next(error);
     }
   }
+
+  loginUser=async(req,res,next)=>{
+      try {
+        const userData=req.body;
+
+      const user = await this.userService.loginUser(userData);
+
+      res.status(200).json({success:true,user:user});
+      } catch (error) {
+        next(error);
+      }
+
+  }
 }
 
 module.exports = new AuthController(); // ✅ FIXED
