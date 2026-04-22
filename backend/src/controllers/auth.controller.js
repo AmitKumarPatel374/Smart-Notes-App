@@ -1,48 +1,50 @@
-const UserService = require("../services/user.service"); // ✅ FIXED
+const UserService = require("../services/user.service") // ✅ FIXED
+const { getCookiesOptions } = require("../utils/cookie.utils")
 
 class AuthController {
   constructor() {
-    this.userService = new UserService();
+    this.userService = new UserService()
   }
 
   register = async (req, res, next) => {
     try {
-      const userData = req.body;
+      const userData = req.body
 
-    //   console.log("user data received successfully!", userData);
-      const result = await this.userService.register(userData);
+      //   console.log("user data received successfully!", userData);
+      const result = await this.userService.register(userData)
 
-      res.status(201).json({success:true,data:result});
-
+      res.status(201).json({ success: true, data: result })
     } catch (error) {
-      next(error); // ✅ important for errorHandler
-    }
-  };
-
-  findUserByEmail = async(req,res,next)=>{
-    try {
-        const {email} = req.body;
-
-        const user = await this.userService.findUserByEmail(email);
-
-        res.status(200).json({success:true, user:user});
-    } catch (error) {
-        next(error);
+      next(error) // ✅ important for errorHandler
     }
   }
 
-  loginUser=async(req,res,next)=>{
-      try {
-        const userData=req.body;
+  findUserByEmail = async (req, res, next) => {
+    try {
+      const { email } = req.body
 
-      const user = await this.userService.loginUser(userData);
+      const user = await this.userService.findUserByEmail(email)
 
-      res.status(200).json({success:true,user:user});
-      } catch (error) {
-        next(error);
-      }
+      res.status(200).json({ success: true, user: user })
+    } catch (error) {
+      next(error)
+    }
+  }
 
+  loginUser = async (req, res, next) => {
+    try {
+      const userData = req.body
+
+      const user = await this.userService.loginUser(userData)
+
+      const token = await user.generateToken()
+      res.cookie("token", token, getCookiesOptions())
+
+      res.status(200).json({ success: true, user: user })
+    } catch (error) {
+      next(error)
+    }
   }
 }
 
-module.exports = new AuthController(); // ✅ FIXED
+module.exports = new AuthController() // ✅ FIXED

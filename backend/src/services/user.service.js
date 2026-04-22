@@ -1,5 +1,6 @@
 const userModel = require("../models/User.model");
 const MongoUserRepository = require("../repositories/implementations/mongoUserRepository"); 
+const { getCookiesOptions } = require("../utils/cookie.utils");
 const AppError = require("../utils/error");
 
 
@@ -39,9 +40,7 @@ class UserService {
             throw new AppError("Invalid Credientials!",400);
         }
 
-        const token = await existingUser.generateToken();
-        
-
+        return existingUser;
         
     }
 }
