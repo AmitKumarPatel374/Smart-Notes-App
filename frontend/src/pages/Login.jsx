@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Eye, EyeOff } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import apiInstance from "../api/apiInstance"
 
 const Login = () => {
   const {
@@ -14,10 +15,15 @@ const Login = () => {
 
   const [isShowPassword, setIsShowPassword] = useState(false)
 
-  const submitHandler = (data) => {
+  const submitHandler = async(data) => {
     try {
-      console.log(data)
-    } catch (error) {}
+       const response = await apiInstance.post("/auth/login",data);
+       console.log(response);
+       
+    } catch (error) {
+      console.log(error);
+      
+    }
   }
 
   return (
