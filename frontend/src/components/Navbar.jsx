@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { ArrowDown, CircleUserRound } from "lucide-react";
+import React, { useState } from "react"
+import { NavLink } from "react-router-dom"
+import { ArrowDown, CircleUserRound } from "lucide-react"
+import { useContext } from "react"
+import {userContext} from "../context/DataContext"
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const {token} = useContext(userContext)
+  console.log(token);
 
   return (
     <nav className="flex justify-between items-center px-8 py-4 bg-gray-900 text-white relative">
-
       {/* Logo */}
-      <h1 className="text-xl font-bold tracking-wide">
-        E-NOTES
-      </h1>
+      <h1 className="text-xl font-bold tracking-wide">E-NOTES</h1>
 
       {/* User Menu */}
       <div
@@ -26,60 +27,57 @@ const Navbar = () => {
       </div>
 
       {/* Dropdown */}
-      {isOpen && (
-        <div className="absolute right-8 top-16 w-48 bg-gray-800 text-gray-500 rounded-lg shadow-lg flex flex-col overflow-hidden z-50">
+      {/* Dropdown */}
+      {isOpen &&
+        (token ? (
+          <div className="absolute right-8 top-16 w-48 bg-gray-800 text-gray-500 rounded-lg shadow-lg flex flex-col overflow-hidden z-50">
+            <NavLink
+              to="/profile"
+              className="px-4 py-2 hover:bg-gray-100"
+            >
+              Profile
+            </NavLink>
 
-          <NavLink
-            to="/profile"
-            className="px-4 py-2 hover:bg-gray-100"
-          >
-            Profile
-          </NavLink>
+            <NavLink
+              to="/"
+              className="px-4 py-2 hover:bg-gray-100"
+            >
+              Home
+            </NavLink>
 
-          <NavLink
-            to="/"
-            className="px-4 py-2 hover:bg-gray-100"
-          >
-            Home
-          </NavLink>
+            <NavLink
+              to="/dashboard"
+              className="px-4 py-2 hover:bg-gray-100"
+            >
+              Dashboard
+            </NavLink>
 
-          <NavLink
-            to="/dashboard"
-            className="px-4 py-2 hover:bg-gray-100"
-          >
-            Dashboard
-          </NavLink>
+            <NavLink
+              to="/dashboard/view"
+              className="px-4 py-2 hover:bg-gray-100"
+            >
+              My Notes
+            </NavLink>
 
-          <NavLink
-            to="/dashboard/view"
-            className="px-4 py-2 hover:bg-gray-100"
-          >
-            My Notes
-          </NavLink>
-
-          <NavLink
-            to="/dashboard/addNote"
-            className="px-4 py-2 hover:bg-gray-100"
-          >
-            New Note
-          </NavLink>
-          <NavLink
-            to="/login"
-            className="px-4 py-2 hover:bg-gray-100"
-          >
-            login
-          </NavLink>
-          <NavLink
-            to="/register"
-            className="px-4 py-2 hover:bg-gray-100"
-          >
-            register
-          </NavLink>
-
-        </div>
-      )}
+            <NavLink
+              to="/dashboard/addNote"
+              className="px-4 py-2 hover:bg-gray-100"
+            >
+              New Note
+            </NavLink>
+          </div>
+        ) : (
+          <div className="absolute right-8 top-16 w-48 bg-gray-800 text-gray-500 rounded-lg shadow-lg flex flex-col overflow-hidden z-50">
+            <NavLink
+              to="/login"
+              className="px-4 py-2 hover:bg-gray-100"
+            >
+              Login
+            </NavLink>
+          </div>
+        ))}
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
