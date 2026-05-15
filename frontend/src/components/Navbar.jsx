@@ -63,6 +63,18 @@ const Navbar = () => {
           >
             New Note
           </NavLink>
+          <NavLink
+            to="/login"
+            className="px-4 py-2 hover:bg-gray-100"
+          >
+            login
+          </NavLink>
+          <NavLink
+            to="/register"
+            className="px-4 py-2 hover:bg-gray-100"
+          >
+            register
+          </NavLink>
 
         </div>
       )}
